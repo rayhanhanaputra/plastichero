@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dashboard | Plastic Hero</title>
+  </head>
+  <body class="bg-[url('static/image/new_4.jpg')] bg-cover">
+    <div class="flex">
+      <div class="sidebar-container flex-none w-80 h-screen bg-black/25 pr-32 pl-10">
+        <div class="profile">
+          <img src="static/image/profil.jpg" class="rounded-full h-50 w-50 mt-6 mb-5 ml-10" />
+          <a class="text-4xl font-semibold text-white">Hello, {{username}}!</a><br /><br />
+          <a class="text-white">Score&emsp;&emsp; : {{score_total}}</a><br />
+          <a class="text-white">Stars 🌟&emsp;: {{stars_count}}</a>
+        </div>
+        <div class="navigation mt-10">
+          <div class="nav-item bg-blue-500 p-2 rounded-xl text-white w-60 text-center mb-4 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./dashboard';">Home</div>
+          <div class="nav-item bg-blue-500 p-2 rounded-xl text-white w-60 text-center mb-4 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./info';">Info about plastic</div>
+          <div class="nav-item bg-blue-500 p-2 rounded-xl text-white w-60 text-center mb-4 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./guide';">How to Play</div>
+          <div class="nav-item bg-blue-500 p-2 rounded-xl text-white w-60 text-center mb-4 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./leaderboard';">Leaderboard</div>
+          <div class="nav-item bg-blue-500 p-2 rounded-xl text-white w-60 text-center mb-4 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./logout';">Logout</div>
+        </div>
+      </div>
+      {% set score1 = score1 | int %}
+      {% set score2 = score2 | int %}
+      {% set score3 = score3 | int %}
+      <div class="content-container flex-initial w-full mx-4">
+        <div class="title text-center text-5xl font-semibold text-blue-700 mt-16">Plastic Education Game Framework</div>
+        <div class="level-list grid grid-cols-3 gap-4 justify-items-center text-center mt-40">
+          <div class="level bg-blue-700/90 rounded-xl h-64 w-64 p-2 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./level1';">
+            <div class="level-number text-white text-xl font-semibold">Level 1</div>
+            <div class="starts flex gap-8 justify-center my-4">
+              {% if score1 == 100 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+              {% elif score1 >= 60 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+              {% elif score1 >= 20 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+              {% else %}
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />  
+              {% endif %}
+            </div>
+            <img src="static/image/level-unlock.png" alt="" class="mx-auto -mt-36" />
+            <div class="level-score text-white text-lg italic mt-5">{{score1}}/100</div>
+          </div>
+          <div class="level bg-blue-700/90 rounded-xl h-64 w-64 p-2 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./level2';">
+            <div class="level-number text-white text-xl font-semibold">Level 2</div>
+            <div class="starts flex gap-8 justify-center my-4">
+              {% if score2 == 100 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+              {% elif score2 >= 60 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+              {% elif score2 >= 20 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+              {% else %}
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />  
+              {% endif %}
+            </div>
+            <img src="static/image/level-unlock.png" alt="" class="mx-auto -mt-36" />
+            <div class="level-score text-white text-lg italic mt-5">{{score2}}/100</div>
+          </div>
+          <div class="level bg-blue-700/90 rounded-xl h-64 w-64 p-2 hover:cursor-pointer hover:bg-blue-900" onclick="location.href='./level3';">
+            <div class="level-number text-white text-xl font-semibold">Level 3</div>
+            <div class="starts flex gap-8 justify-center my-4">
+              {% if score3 == 100 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+              {% elif score3 >= 60 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+              {% elif score3 >= 20 %}
+                <img src="../static/image/star-enable.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+              {% else %}
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />
+                <img src="../static/image/star-disabled.png" class="h-10" />  
+              {% endif %}
+            </div>
+            <img src="static/image/level-unlock.png" alt="" class="mx-auto -mt-36" />
+            <div class="level-score text-white text-lg italic mt-5">{{score3}}/100</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css" />
+    <title>Level {{level}} | Plastic Hero</title>
+  </head>
+  <body class="bg-[url('static/image/bg3.jpg')] bg-cover">
+    <section class="h-screen">
+      <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="quiz-container flex flex-col bg-white/90 min-h-[60%] p-4 justify-between rounded-t-xl">
+          <div class="complete-content">
+            <div class="complete-title text-center text-4xl font-bold text-blue-700"><img src="static/image/lvlcom.png" class="w-80" /></div>
+            <div class="complete-content max-w-xl mx-auto">
+              {% set score_total = score_total | int %}
+              {% set skor_akhir = score_total*20 %}
+              <div class="bg-yellow-400 mx-auto rounded-3xl w-40 p-2 text-white font-bold text-xl text-center mb-1">Level<span>:</span>{{level}}</div>
+              <div class="text-yellow-400 font-semibold text-xl text-center mb-1">Score<span>:</span> {{skor_akhir}}</div>
+              <div class="text-yellow-400 font-semibold text-xl text-center mb-1">Correct<span>:</span>{{score_total}}</div>
+              <div class="text-yellow-400 font-semibold text-xl text-center mb-1">Wrong<span>:</span> {{5 - score_total}}</div>
+              <div class="start-score items-center flex justify-center gap-5 mt-4">
+                {% if score_total == 5 %}
+                  <img src="../static/image/star-enable.png" class="h-10" />
+                  <img src="../static/image/star-enable.png" class="h-10" />
+                  <img src="../static/image/star-enable.png" class="h-10" />
+                {% elif score_total > 2 %}
+                  <img src="../static/image/star-enable.png" class="h-10" />
+                  <img src="../static/image/star-enable.png" class="h-10" />
+                  <img src="../static/image/star-disabled.png" class="h-10" />
+                {% elif score_total > 0 %}
+                  <img src="../static/image/star-enable.png" class="h-10" />
+                  <img src="../static/image/star-disabled.png" class="h-10" />
+                  <img src="../static/image/star-disabled.png" class="h-10" />
+                {% else %}
+                  <img src="../static/image/star-disabled.png" class="h-10" />
+                  <img src="../static/image/star-disabled.png" class="h-10" />
+                  <img src="../static/image/star-disabled.png" class="h-10" />  
+                {% endif %}
+
+                <!-- <div class="star-enable">
+                  <img src="static/image/star-enable.png" class="h-14" />
+                </div>
+                <div class="star-disabled">
+                  <img src="static/image/star-disabled.png" class="h-14" />
+                </div>
+                <div class="star-disabled">
+                  <img src="static/image/star-disabled.png" class="h-14" />
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="complete-nav flex content-between justify-center mt-8">
+            <div id="finish" class="finish text-white bg-green-500 rounded-lg p-2 w-24 text-center text-bg-blue-700 hover:cursor-pointer hover:bg-green-700" onclick="location.href='./dashboard';">Finish</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
